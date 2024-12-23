@@ -2,17 +2,6 @@
     margin: 0;
     padding: 0;
 }
-
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    margin: 0;
-}
-
 nav{
     /* background-color: aqua; */
     width: 100%;
@@ -81,27 +70,5 @@ canvas{
     margin: 5px;
     width: 100%;
     height: 70%;
-}
 
-.percentage-container {
-    text-align: center;
-}
-
-.progress-bar {
-    width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.progress {
-    height: 25px;
-    background-color: #76c7c0;
-    border-radius: 25px 0 0 25px;
-}
-
-.percentage-text {
-    font-size: 1.5em;
-    color: #333;
 }
