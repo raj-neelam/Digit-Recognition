@@ -1,96 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Simple Button</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage View</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-<script>
-async function loadTrendModel() {
-    // Load the converted TF.js model
-    window.trendModel = await tf.loadLayersModel('trend_model_js/model.json');
-    console.log('Model loaded');
-}
-
-async function predictDigitWithDetails(canvas) {
-    if (!window.trendModel) return;
-
-    const img = tf.browser.fromPixels(canvas)
-        .resizeNearestNeighbor([28, 28])
-        .mean(2)
-        .expandDims(-1)
-        .toFloat()
-        .div(tf.scalar(255))
-        .expandDims(0);
-
-    const predictions = window.trendModel.predict(img);
-    const data = await predictions.data();
-    predictions.dispose();
-    img.dispose();
-
-    let resultText = '';
-    data.forEach((val, idx) => {
-        resultText += `Digit ${idx}: ${(val * 100).toFixed(2)}%<br>`;
-    });
-
-    const output = document.getElementById('predictionDetail');
-    if (output) {
-        output.innerHTML = resultText;
-    }
-}
-
-window.addEventListener('DOMContentLoaded', loadTrendModel);
-</script>
 <body>
-    <button>Click Me</button>
+    <nav class="navigation">
+        <h1>This is a hand writen digit classifier</h1>
+    </nav>
+    <main>
+        <div class="canvas_holder">
+            <canvas></canvas>
+        </div>
+        <div class="prob_display">
+            <div class="class_holder">
+                <div class="prob_card">
+                    <div class="digit">0</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">1</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">2</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">3</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">4</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">5</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">6</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">7</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">8</div>
+                    <div class="percentage_view"></div>
+                </div>
+                <div class="prob_card">
+                    <div class="digit">9</div>
+                    <div class="percentage_view"></div>
+                </div>
+            </div>
+        </div>
+        <div class="percentage-container">
+            <div class="progress-bar">
+                <div class="progress" style="width: 75%;"></div>
+            </div>
+            <span class="percentage-text">75%</span>
+        </div>
+    </main>
 </body>
 </html>
-<canvas id="digitCanvas" width="200" height="200" style="border:1px solid #000;"></canvas>
-<button id="resetCanvas">Reset</button>
-<script>
-    let canvas = document.getElementById('digitCanvas');
-    let ctx = canvas.getContext('2d');
-    let drawing = false;
-
-    canvas.addEventListener('mousedown', () => { drawing = true; });
-    canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
-    canvas.addEventListener('mousemove', draw);
-
-    function draw(e) {
-        if(!drawing) return;
-        ctx.lineWidth = 8;
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = '#000';
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(e.offsetX, e.offsetY);
-    }
-
-    document.getElementById('resetCanvas').addEventListener('click', () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    });
-
-    // Example placeholder for model prediction
-    function predictDigit() {
-        // Code to load and use pickled model goes here
-        alert('Prediction logic not implemented yet.');
-    }
-</script>
-<script>
-const resultContainer = document.createElement('div');
-document.body.appendChild(resultContainer);
-
-function realTimePrediction() {
-    // Placeholder: retrieve canvas data and run prediction here
-    // For demonstration, we'll set a random digit as the prediction
-    const predictedDigit = Math.floor(Math.random() * 10);
-    resultContainer.textContent = 'Current Prediction: ' + predictedDigit;
-}
-
-// Trigger prediction during drawing
-canvas.addEventListener('mousemove', () => {
-    if (drawing) {
-        realTimePrediction();
-    }
-});
-</script>

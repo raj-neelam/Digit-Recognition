@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+nav{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav h1 {
+    text-transform: capitalize;
+    font-size: 4vw;
+}
+/* main */
+main{
+    /* background-color: red; */
+    display: flex;
+    height: 60vh;
+    margin: 5vw 5vw 0vw 5vw;
+}
+.canvas_holder{
+    /* background-color: #149458; */
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas{
+    background-color: black;
+    box-shadow: 0 0 15px black;
+}
+/* prob display */
+.prob_display{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.class_holder{
+    /* background-color: rgba(128, 128, 128, 0.407); */
+    border: 1px solid red;
+    margin: 20px;
+    width: 100%;
+    padding: 10px 0px;
+    border-radius: 10px;
+}
+.prob_card{
+    /* background-color: #9c9292; */
+    /* padding: 10px 5px; */
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+.digit{
+    padding: 0px 10px;
+    /* border: 1px solid green; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+}
+.percentage_view{
+    border: 1px solid black;
+    margin: 5px;
+    width: 100%;
+    height: 70%;
+}
+
+.percentage-container {
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 25px;
+    background-color: #76c7c0;
+    border-radius: 25px 0 0 25px;
+}
+
+.percentage-text {
+    font-size: 1.5em;
+    color: #333;
+}
