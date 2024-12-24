@@ -9,6 +9,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 8vw;
 }
 nav h1 {
     text-transform: capitalize;
@@ -25,6 +26,7 @@ main{
     /* background-color: #149458; */
     width: 60%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -32,9 +34,14 @@ canvas{
     background-color: black;
     box-shadow: 0 0 15px black;
 }
+button{
+    width: 50%;
+    height: 100%;
+    margin: 1vw;
+}
 /* prob display */
 .prob_display{
-    width: 100%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -63,12 +70,18 @@ canvas{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3vw;
+    font-size: 2.5vw;
 }
 .percentage_view{
     border: 1px solid black;
     margin: 5px;
     width: 100%;
     height: 70%;
-
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.progres{
+    background-color: lightseagreen;
+    height: 100%;
 }
