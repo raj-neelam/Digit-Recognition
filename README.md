@@ -2,6 +2,10 @@
 
 ![website image](./website_preview.png)
 
+## Try It Out
+
+You can try out the digit recognition system by visiting the following link: [Digit Recognition Demo](https://rajgaurav.me/Digit-Recognition/)
+
 ## Overview
 
 This project is a Convolutional Neural Network (CNN) based digit recognition system. It is trained on the MNIST dataset, which consists of handwritten digits. The system can accurately recognize and classify digits from 0 to 9.
