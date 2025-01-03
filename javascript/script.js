@@ -2,16 +2,18 @@ import { Canvas } from './canvas_util.js';
 
 var c = new Canvas(0.30, 0.50)
 
+document.addEventListener('contextmenu', event => event.preventDefault());
+
 function grids(c) {
     let lines_x = 28;
     let gap_x = c.width / lines_x;
-    for (let i = 0; i <= lines_x; i+=1) {
-        c.line(gap_x * i, 0, gap_x * i, c.height, 10, 'white');
+    for (let i = 1; i < lines_x; i++) {
+        c.line(gap_x * i, 0, gap_x * i, c.height, 1, 'white');
     }
     let lines_y = 28;
     let gap_y = c.height / lines_y;
     for (let i = 0; i <= lines_y; i+=1) {
-        c.line(0, gap_y * i, c.width, gap_y * i, 10, 'white');
+        c.line(0, gap_y * i, c.width, gap_y * i, 1, 'white');
     }
 }
 function drawGrid(grid, c) {
@@ -28,7 +30,7 @@ function drawGrid(grid, c) {
 
 function ShowMouse() {
     if (c.mouse[0] > 0 && c.mouse[1] > 0) {
-        c.circle(c.mouse[0], c.mouse[1], 25, 'white');
+        c.circle(c.mouse[0], c.mouse[1], 25, 1, 'white');
     }   
 }
 function updateGridWithMouse(grid, radius, c) {
@@ -71,6 +73,11 @@ function clear_grid() {
 }
 
 document.getElementById("reset").addEventListener("click", clear_grid);
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+        clear_grid();
+    }
+});
 
 let grid = Array.from({ length: 28 }, () => Array(28).fill(0));
 // grid = grid.map(row => row.map(() => Math.random()));
@@ -87,6 +94,9 @@ async function classifyInput(data2d) {
     return probabilities[0].map(value => value * 300);
 }
 let prob = Array(10).fill(0);
+function transposeGrid(grid) {
+    return grid[0].map((_, colIndex) => grid.map(row => row[colIndex]));
+}
 
 function animate(){
     requestAnimationFrame(animate)
@@ -94,16 +104,16 @@ function animate(){
     // write from here
     grids(c)
     drawGrid(grid, c)
-    // ShowMouse()
+    ShowMouse()
     let { changeOccurred, newGrid } = updateGridWithMouse(grid, 25, c);
     if (changeOccurred) {
         grid = newGrid;
         // prob = classifyInput(grid);
         // console.log("data", prob);
-        classifyInput(grid).then(prob => {
+        classifyInput(transposeGrid(grid)).then(prob => {
             // console.log("data", prob);
             for (let i = 0; i < prob.length; i++) {
-                document.getElementById(['zero', 'one', 'four', 'three', 'two', 'five', 'six', 'seven', 'eight', 'nine'][i]).style.width = prob[i] + '%';
+                document.getElementById(['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][i]).style.width = prob[i] + '%';
             }
         });
     }

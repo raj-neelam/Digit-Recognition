@@ -61,8 +61,8 @@ canvas {
     background-color: black;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
-    width: 500px;
-    height: 400px;
+    /* width: 500px;
+    height: 400px; */
 }
 
 button {
@@ -91,12 +91,12 @@ button:hover {
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem; /* Reduced gap */
 }
 
 .class_holder {
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.356);
     width: 100%;
     padding: 10px 15px;
     border-radius: 10px;
@@ -106,10 +106,10 @@ button:hover {
 
 .prob_card {
     width: 100%;
-    height: 50px;
+    height: 40px; /* Reduced height */
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Reduced margin */
     background: #f9f9f9;
     border-radius: 5px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
