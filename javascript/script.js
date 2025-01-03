@@ -103,7 +103,7 @@ function animate(){
         classifyInput(grid).then(prob => {
             // console.log("data", prob);
             for (let i = 0; i < prob.length; i++) {
-                document.getElementById(['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][i]).style.width = prob[i] + '%';
+                document.getElementById(['zero', 'one', 'four', 'three', 'two', 'five', 'six', 'seven', 'eight', 'nine'][i]).style.width = prob[i] + '%';
             }
         });
     }
